@@ -1,0 +1,24 @@
+PS D:\Web development\Alto_Full_Stack_course\Full Stack Open Containers\fs-containers> docker run -it ubuntu bash
+root@415eb31e8598:/# ls
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@415eb31e8598:/# cd usr/
+root@415eb31e8598:/usr# ls
+bin  games  include  lib  lib64  libexec  local  sbin  share  src
+root@415eb31e8598:/usr# cd src/
+root@415eb31e8598:/usr/src# ls
+root@415eb31e8598:/usr/src# mkdir -p app
+root@415eb31e8598:/usr/src# ls
+app
+root@415eb31e8598:/usr/src# touch index.js
+root@415eb31e8598:/usr/src# ls
+app  index.js
+root@415eb31e8598:/usr/src# rm index.js
+root@415eb31e8598:/usr/src# ls
+app
+root@415eb31e8598:/usr/src# cd app/
+root@415eb31e8598:/usr/src/app# touch index.js
+root@415eb31e8598:/usr/src/app# ls
+index.js
+root@415eb31e8598:/usr/src/app# exit
+exit
+PS D:\Web development\Alto_Full_Stack_course\Full Stack Open Containers\fs-containers>
