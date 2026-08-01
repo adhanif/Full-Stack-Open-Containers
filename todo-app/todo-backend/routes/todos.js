@@ -13,16 +13,11 @@ router.get('/', async (_, res) => {
 router.post('/', async (req, res) => {
   const todo = await Todo.create({
     text: req.body.text,
-    done: false,
+    done: req.body.done || false,
   });
   const current = await redis.get('added_todos');
   await redis.set('added_todos', Number(current || 0) + 1);
   res.send(todo);
-});
-
-router.get('/statistics', async (req, res) => {
-  const addedTodos = await redis.get('added_todos');
-  res.send({ added_todos: Number(addedTodos || 0) });
 });
 
 const singleRouter = express.Router();
@@ -52,18 +47,6 @@ singleRouter.put('/', async (req, res) => {
   req.todo.done = req.body.done;
   await req.todo.save();
   res.send(req.todo);
-});
-
-/* POST todo. */
-singleRouter.put('/', async (req, res) => {
-  req.todo.text = req.body.text;
-  req.todo.done = req.body.done;
-  await req.todo.save();
-  res.send(req.todo);
-
-  const current = await redis.get('added_todos');
-
-  await redis.set('added_todos', Number(current || 0) + 1);
 });
 
 router.use('/:id', findByIdMiddleware, singleRouter);
