@@ -9,6 +9,7 @@ export default defineConfig({
       usePolling: true,
       interval: 100,
     },
+    allowedHosts: ['app', 'localhost'],
   },
   test: {
     environment: 'jsdom',
